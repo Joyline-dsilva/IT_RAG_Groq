@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="app-token" content="{{ token }}"><title>Deskwise · IT Knowledge Assistant</title>
+<link rel="stylesheet" href="{{ url_for('static',filename='style.css') }}">
+<script src="{{ url_for('static',filename='app.js') }}" defer></script></head>
+<body>
+<aside class="sidebar">
+  <a class="brand" href="/"><span class="logo">d.</span><span>deskwise<small>YOUR IT KNOWLEDGE, CONNECTED</small></span></a>
+  <button id="new-chat" class="new-chat">＋ &nbsp; New conversation <span>↗</span></button>
+  <div class="section-label">KNOWLEDGE BASE <span id="doc-count">0</span></div>
+  <p class="muted">Add your procedures. Get answers grounded in your documents.</p>
+  <label class="upload" tabindex="0" role="button" aria-label="Upload document"><span>↑</span><strong>Add a document</strong><small>PDF, Word, TXT or Markdown · up to 12 MB</small><input type="file" id="file" accept=".pdf,.docx,.txt,.md" hidden></label>
+  <button id="open-paste" class="secondary full">▤ &nbsp; Paste document text</button>
+  <div id="documents" class="documents"></div>
+  <div class="sidebar-footer"><div class="local-tag"><span class="dot"></span> Local document search</div><p>Answers generated online by Groq.<br>Relevant passages leave your laptop.</p><div class="profile"><span class="avatar">IT</span><div>Personal workspace<small>Local · single user</small></div></div></div>
+</aside>
+<main>
+  <header><div><span class="header-label">WORKSPACE / ASSISTANT</span><h1>IT Knowledge Assistant</h1></div><span id="api-status" class="status">Checking API configuration…</span></header>
+  <section id="chat" class="chat" aria-live="polite">
+    <div id="welcome" class="welcome"><div class="eyebrow"><span class="dot"></span> GROUNDED IN YOUR DOCUMENTS</div><div class="hero-icon">✧</div><h2>Less searching.<br><span>More solving.</span></h2><p>Your IT procedures, one conversation away.<br>Add a document, then ask what you need to know.</p>
+    <div class="suggestions"><button data-question="What steps should I follow if Outlook is not receiving emails?"><span>✉</span><strong>Outlook & email</strong><small>Find the right troubleshooting steps</small><b>↗</b></button><button data-question="How do I troubleshoot a Wi-Fi connection problem?"><span>⌁</span><strong>Network & Wi-Fi</strong><small>Get connected with your procedures</small><b>↗</b></button><button data-question="What should I do if the printer is not printing?"><span>▤</span><strong>Printer support</strong><small>Resolve everyday printing issues</small><b>↗</b></button><button data-question="What are the approved steps for a password reset?"><span>⊙</span><strong>Access & accounts</strong><small>Check your approved access guidance</small><b>↗</b></button></div>
+    <div class="how"><span>01 &nbsp; Add your documents</span><i>→</i><span>02 &nbsp; Ask a question</span><i>→</i><span>03 &nbsp; Review the sources</span></div></div>
+  </section>
+  <div class="compose-wrap"><div id="notice" class="notice" role="status"></div><form id="chat-form" class="composer"><div class="compose-icon">✧</div><textarea id="question" rows="1" maxlength="2000" aria-label="Ask a question" placeholder="Ask a question about your IT documents…" required></textarea><button id="send" type="submit" aria-label="Send question">↑</button></form><div class="compose-note"><span><span class="tiny-dot"></span> llama-3.1-8b-instant</span><span>Enter to send · Shift + Enter for a new line</span></div><p class="accuracy">AI can make mistakes. Review the retrieved passages before following a procedure. Each question is independent.</p></div>
+</main>
+<dialog id="paste-dialog"><form id="paste-form"><div class="dialog-top"><div><span class="header-label">BUILD YOUR KNOWLEDGE BASE</span><h2>Paste a document</h2></div><button type="button" id="close-paste" class="close" aria-label="Close">×</button></div><p class="muted">Paste your IT procedure, policy or troubleshooting guide.</p><label for="doc-name">Document name</label><input id="doc-name" placeholder="e.g. IT troubleshooting procedures" maxlength="160" required><label for="doc-text">Document content</label><textarea id="doc-text" placeholder="Paste your full document here…" required></textarea><p class="muted">Saved on this laptop. Retrieved passages are sent to Groq when you ask a question.</p><button type="submit" id="save-paste" class="primary">Add to knowledge base →</button></form></dialog>
+</body></html>
