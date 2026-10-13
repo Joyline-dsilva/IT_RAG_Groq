@@ -1022,6 +1022,8 @@ def too_large(error):
         error="Upload is too large. Maximum request size is 12 MB."
     ), 413
 
+from auth import init_auth
+init_auth(app, connect, LOCK, TOKEN)
 
 # ---------- Start server ----------
 

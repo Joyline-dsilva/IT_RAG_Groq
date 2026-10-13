@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="app-token" content="{{ token }}"><title>Deskwise · Admin</title>
+<link rel="stylesheet" href="{{ url_for('static',filename='auth.css') }}">
+<script src="{{ url_for('static',filename='auth.js') }}" defer></script>
+</head>
+<body data-mode="{{ mode }}">
+<div class="center"><div class="card">
+  <a class="brand" href="/"><span class="logo">d.</span><span>deskwise<small>ADMIN ACCESS</small></span></a>
+  <div id="msg" class="msg" role="alert"></div>
+
+  <!-- first-time setup -->
+  <section id="v-setup" hidden>
+    <h2>Create admin account</h2>
+    <p class="muted">First time here. Set the admin login. Only you will manage the documents.</p>
+    <form id="f-setup" class="stack">
+      <div><label for="s-user">Username</label><input id="s-user" autocomplete="username" required minlength="3" maxlength="60"></div>
+      <div><label for="s-pass">Password</label>
+        <div class="pw"><input id="s-pass" type="password" autocomplete="new-password" required minlength="8" maxlength="128"><button type="button" data-toggle="s-pass">Show</button></div>
+        <div class="meter"><i id="s-meter"></i></div>
+        <p class="muted hint">At least 8 characters with a letter and a number.</p></div>
+      <div><label for="s-pass2">Confirm password</label><input id="s-pass2" type="password" autocomplete="new-password" required maxlength="128"></div>
+      <div><label for="s-q">Security question</label><input id="s-q" placeholder="e.g. Name of my first school" required minlength="5" maxlength="160"></div>
+      <div><label for="s-a">Answer</label><input id="s-a" autocomplete="off" required minlength="2" maxlength="160"></div>
+      <button class="btn primary full" type="submit">Create account</button>
+    </form>
+  </section>
+
+  <!-- recovery code shown once after setup -->
+  <section id="v-code" hidden>
+    <h2>Save your recovery code</h2>
+    <p class="muted">If you forget your password, this code lets you reset it. It is shown only once. Write it down or store it safely.</p>
+    <div id="code" class="code-box"></div>
+    <button id="copy-code" class="btn full mb" type="button">Copy code</button>
+    <button id="to-admin" class="btn primary full" type="button">I saved it, continue →</button>
+  </section>
+
+  <!-- sign in -->
+  <section id="v-login" hidden>
+    <h2>Welcome back</h2>
+    <p class="muted">Sign in to manage your knowledge base.</p>
+    <form id="f-login" class="stack">
+      <div><label for="l-user">Username</label><input id="l-user" autocomplete="username" required maxlength="60"></div>
+      <div><label for="l-pass">Password</label>
+        <div class="pw"><input id="l-pass" type="password" autocomplete="current-password" required maxlength="128"><button type="button" data-toggle="l-pass">Show</button></div></div>
+      <div class="row"><span></span><button type="button" class="link" id="go-forgot">Forgot password?</button></div>
+      <button class="btn primary full" type="submit">Sign in</button>
+    </form>
+  </section>
+
+  <!-- forgot password -->
+  <section id="v-forgot" hidden>
+    <h2>Reset password</h2>
+    <p class="muted">Verify it's you, then choose a new password.</p>
+    <form id="f-forgot" class="stack">
+      <div class="seg"><button type="button" id="m-answer" class="on">Security question</button><button type="button" id="m-code">Recovery code</button></div>
+      <div id="q-wrap"><label id="q-label" for="r-secret">Security question</label></div>
+      <div><input id="r-secret" autocomplete="off" required maxlength="160"></div>
+      <div><label for="r-new">New password</label>
+        <div class="pw"><input id="r-new" type="password" autocomplete="new-password" required minlength="8" maxlength="128"><button type="button" data-toggle="r-new">Show</button></div></div>
+      <div><label for="r-new2">Confirm new password</label><input id="r-new2" type="password" autocomplete="new-password" required maxlength="128"></div>
+      <button class="btn primary full" type="submit">Reset password</button>
+      <button type="button" class="link center-text" id="go-login">← Back to sign in</button>
+    </form>
+  </section>
+
+  <a class="back" href="/">← Back to home</a>
+</div></div>
+</body></html>

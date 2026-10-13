@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="app-token" content="{{ token }}"><title>Deskwise · Welcome</title>
+<link rel="stylesheet" href="{{ url_for('static',filename='auth.css') }}">
+</head>
+<body>
+<main class="landing">
+  <a class="brand" href="/"><span class="logo">d.</span><span>deskwise<small>YOUR IT KNOWLEDGE, CONNECTED</small></span></a>
+  <div>
+    <h1>Less searching.<br><span>More solving.</span></h1>
+    <p class="lead mt">Choose how you want to continue.</p>
+  </div>
+  <div class="roles">
+    <a class="role" href="/chat">
+      <div class="ico">💬</div>
+      <h3>Employee</h3>
+      <p>Ask questions and get step-by-step answers from your company's IT procedures.</p>
+      <b>Open assistant →</b>
+    </a>
+    <a class="role" href="/admin/login">
+      <div class="ico">🔐</div>
+      <h3>Admin</h3>
+      <p>Manage the knowledge base: upload documents, paste text and test the chatbot.</p>
+      <b>Sign in →</b>
+    </a>
+  </div>
+</main>
+</body></html>

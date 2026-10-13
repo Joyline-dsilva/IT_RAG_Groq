@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="app-token" content="{{ token }}"><title>Deskwise · IT Assistant</title>
+<link rel="stylesheet" href="{{ url_for('static',filename='auth.css') }}">
+<script src="{{ url_for('static',filename='user.js') }}" defer></script>
+</head>
+<body>
+<div class="chat-shell">
+  <header class="topbar">
+    <a class="brand" href="/"><span class="logo">d.</span><span>deskwise<small>IT ASSISTANT</small></span></a>
+    <div class="actions">
+      <span class="pill"><span id="dot" class="dot"></span><span id="status">Ready</span></span>
+      <button id="new-chat" class="btn" type="button">＋ New chat</button>
+    </div>
+  </header>
+
+  <section id="thread" class="thread" aria-live="polite">
+    <div id="welcome" class="welcome">
+      <span class="pill"><span class="dot"></span> Answers from your company's IT procedures</span>
+      <h2>How can I help<br><span>fix your issue?</span></h2>
+      <p class="muted">Describe the problem and I'll guide you step by step.</p>
+      <div class="suggest">
+        <button type="button" data-q="What steps should I follow if Outlook is not receiving emails?"><strong>✉ Outlook &amp; email</strong><small>Find the right troubleshooting steps</small></button>
+        <button type="button" data-q="How do I troubleshoot a Wi-Fi connection problem?"><strong>⌁ Network &amp; Wi-Fi</strong><small>Get back online</small></button>
+        <button type="button" data-q="What should I do if the printer is not printing?"><strong>▤ Printer support</strong><small>Fix everyday printing issues</small></button>
+        <button type="button" data-q="What are the approved steps for a password reset?"><strong>⊙ Access &amp; accounts</strong><small>Check approved guidance</small></button>
+      </div>
+    </div>
+  </section>
+
+  <div class="composer-wrap">
+    <form id="form" class="composer">
+      <textarea id="q" rows="1" maxlength="2000" placeholder="Ask a question about your IT issue…" aria-label="Ask a question" required></textarea>
+      <button id="send" class="send" type="submit" aria-label="Send">↑</button>
+    </form>
+    <p class="note">AI can make mistakes. Follow your IT policy and contact the helpdesk if the steps don't solve it. · Enter to send, Shift+Enter for new line</p>
+  </div>
+</div>
+</body></html>
